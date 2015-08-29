@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+DIR=$( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) )
+
+ROOT_FILES=( vimrc.local ackrc )
+
+for file in "${ROOT_FILES[@]}"; do
+  echo Linking $file
+  ln -sf $DIR/$file $HOME/.$file
+done

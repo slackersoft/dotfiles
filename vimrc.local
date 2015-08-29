@@ -1,0 +1,3 @@
+nmap <C-p> :CtrlP<CR>
+set noswapfile
+
