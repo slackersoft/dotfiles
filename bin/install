@@ -2,7 +2,7 @@
 
 DIR=$( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) )
 
-ROOT_FILES=( vimrc.local ackrc )
+ROOT_FILES=( vimrc.local ackrc zshrc.local )
 
 for file in "${ROOT_FILES[@]}"; do
   echo Linking $file
