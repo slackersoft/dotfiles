@@ -1,0 +1,68 @@
+[alias]
+	st = status
+	di = diff
+	co = checkout
+	ci = commit
+	br = branch
+	sta = stash
+	llog = log --date=local
+	flog = log --pretty=fuller --decorate
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	git = !exec git
+	lol = log --graph --decorate --oneline
+	lola = log --graph --decorate --oneline --all
+	blog = log origin/master... --left-right
+	ds = diff --staged
+	fixup = commit --fixup
+	squash = commit --squash
+	unstage = reset HEAD
+	rum = rebase master@{u}
+	dc = duet-commit
+	s = status --branch --short
+	push-f = push --force-with-lease
+[core]
+	pager = less -FXRS -x2
+	excludesfile = ~/.gitignore_global
+[apply]
+	whitespace = nowarn
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+	ui = auto
+[branch]
+	autosetupmerge = true
+[rebase]
+	autosquash = true
+[push]
+	default = current
+[interactive]
+	singlekey = true
+[merge]
+	conflictstyle = diff3
+[credential]
+	helper =
+	helper = cache --timeout 14400
+[include]
+	path = .git-together
+  path = .git-co-authors
+[commit]
+  template = ~/.git-commit-template
+[user]
+	name = Gwendolyn Van Hove
+	email = gwendolyn@mechanical-orchard.com
+[init]
+	templatedir = ~/.git_templates
+	defaultBranch = main
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential

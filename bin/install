@@ -2,9 +2,13 @@
 
 DIR=$( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) )
 
-ROOT_FILES=( vimrc.local ackrc zshrc.local )
+ROOT_FILES=( ackrc gitconfig gitignore_global tmux.conf zshrc )
 
 for file in "${ROOT_FILES[@]}"; do
   echo Linking $file
   ln -sf $DIR/$file $HOME/.$file
 done
+
+echo Linking nvim_init.lua
+mkdir -p $HOME/.config/nvim
+ln -sf $DIR/nvim_init.lua $HOME/.config/nvim/init.lua
