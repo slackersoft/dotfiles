@@ -1,17 +1,9 @@
-. $HOME/workspace/alfalfa/dotfiles/zshprompt
-export PATH=$PATH:$HOME/.local/bin:"/Applications/IntelliJ IDEA CE.app/Contents/MacOS"
+. $HOME/workspace/dotfiles/zshprompt
+export PATH=$PATH:$HOME/.local/bin
 fpath=($fpath ./.zsh_complete ./.zsh_completions)
-
-if command -v rbenv &> /dev/null; then
-  eval "$(rbenv init -)"
-fi
 
 if command -v direnv &> /dev/null; then
   eval "$(direnv hook zsh)"
-fi
-
-if command -v pyenv &> /dev/null; then
-  eval "$(pyenv init -)"
 fi
 
 alias ag="ag --skip-vcs-ignore"

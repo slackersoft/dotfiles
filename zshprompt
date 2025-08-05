@@ -1,0 +1,55 @@
+zsh_gitprompt() {
+  # Note: When changing these colors, be sure to test for adequate contrast
+  # on both light and dark backgrounds! Don't assume that everyone does or
+  # can use a dark background, or can easily read low contrast text.
+  COLOR_RED="%{\e[0;31m%}"
+  COLOR_GREEN="%{\e[0;32m%}"
+  COLOR_RESET="%{\u001b[0m%}"
+
+  if ! gitstatus=$(git status --porcelain -b 2> /dev/null); then
+    # Not a git repo
+    return 0
+  fi
+
+  # If we're merging or rebasing, show only that information.
+  if git rev-parse MERGE_HEAD > /dev/null 2>&1; then
+    echo "|${COLOR_RED}MERGING${COLOR_RESET}| "
+    return 0
+  fi
+
+  if git rebase --show-current-patch > /dev/null 2>&1; then
+    echo "|${COLOR_RED}REBASING${COLOR_RESET}| "
+    return 0
+  fi
+
+  # If the status includes anything other than branch headers,
+  # there are uncommitted changes.
+  if echo "$gitstatus" | grep '^[^#]' > /dev/null; then
+    # Some changes
+    statuspart="${COLOR_RED}x${COLOR_RESET}"
+  else
+    # No changes
+    statuspart="${COLOR_GREEN}✓${COLOR_RESET}"
+  fi
+
+  if [[ "$gitstatus" =~ '^#.+ahead ([0-9]+)' ]]; then
+    aheadbehindpart=" ↑$match"
+  elif [[ "$gitstatus" =~ '^#.+behind ([0-9]+)' ]]; then
+    aheadbehindpart=" ↓$match"
+  else
+    aheadbehindpart=""
+  fi
+
+
+  if branch=$(git symbolic-ref -q HEAD); then
+    branchpart="${branch#refs/heads/}"
+  else
+    branchpart="(detached)"
+  fi
+
+  echo "|${branchpart}${aheadbehindpart} ${statuspart}| "
+}
+
+setopt prompt_subst
+newline=$'\n'
+PS1='${newline}%m in ${PWD/$HOME/~}${newline}$(zsh_gitprompt)%# '
