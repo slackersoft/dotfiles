@@ -14,6 +14,9 @@ alias kc=kubectl
 alias tf=terraform
 alias vim=nvim
 
+export EDITOR=nvim
+export GIT_EDITOR=nvim
+
 autoload -Uz compinit
 compinit
 

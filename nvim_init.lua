@@ -71,7 +71,7 @@ require('lazy').setup({
 		'nvim-telescope/telescope.nvim',
 		requires = { { 'nvim-lua/plenary.nvim' } }
 	},
-	{ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+	{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 	{
 		'nvim-tree/nvim-tree.lua',
 		lazy = false,
