@@ -139,7 +139,7 @@ local lspconfig = require("lspconfig")
 -- 	capabilities = capabilities,
 -- }
 lspconfig.lexical.setup {
-	cmd = { "/Users/gwenny/workspace/lexical/_build/dev/package/lexical/bin/start_lexical.sh" },
+	cmd = { "$HOME/workspace/lexical/_build/dev/package/lexical/bin/start_lexical.sh" },
 	root_dir = function(fname)
 		return lspconfig.util.root_pattern("mix.exs", ".git")(fname) or vim.loop.cwd()
 	end,

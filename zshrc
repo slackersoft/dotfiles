@@ -2,6 +2,8 @@
 export PATH=$PATH:$HOME/.local/bin
 fpath=($fpath ./.zsh_complete ./.zsh_completions)
 
+bindkey -e
+
 if command -v direnv &> /dev/null; then
   eval "$(direnv hook zsh)"
 fi
