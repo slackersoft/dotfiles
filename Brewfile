@@ -1,0 +1,10 @@
+tap 'jamesjoshuahill/tap'
+
+brew 'tmux'
+brew 'ripgrep'
+brew 'jamesjoshuahill/tap/git-co-author'
+brew 'gh'
+brew 'node'
+brew 'python'
+brew 'neovim'
+brew 'gh'
